@@ -2,7 +2,7 @@
 Interface for all expression AST node classes.
 """
 
-class Expression:
+class Expression(object):
     pass
 
 

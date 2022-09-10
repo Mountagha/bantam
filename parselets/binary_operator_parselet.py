@@ -1,6 +1,7 @@
-from infix_parselet import InfixParselet
+from parselets.infix_parselet import InfixParselet
 from expressions.expression import Expression
 from expressions.operator_expression import OperatorExpression
+from precedence import Precedence
 from parser import Parser
 from token import Token
 
@@ -11,14 +12,10 @@ associativity, so we can use a single parselet class for all of those.
 """
 
 class BinaryOperatorParselet(InfixParselet):
-    def __init__(self, precedence: int, mIsRight: bool) -> None:
+    def __init__(self, precedence: Precedence, mIsRight: bool) -> None:
         super().__init__()
         self.mPrecedence = precedence
         self.mIsRight = mIsRight
-
-    @property
-    def precedence(self):
-        return self.mPrecedence
     
     def parse(self, parser: Parser, left: Expression, token: Token) -> Expression:
         """
@@ -27,7 +24,8 @@ class BinaryOperatorParselet(InfixParselet):
         a parselet with the same precedence appear on the right, which will
         then take *this* parselet's result as its left-hand argument.
         """ 
-        right = parser.parseExpression(self.mPrecedence)
+        right = parser.parseExpression(self.mPrecedence - (1 if self.mIsRight else 0))
         return OperatorExpression(left, token.mtype, right)
 
- 
+    def precedence(self):
+        return self.mPrecedence

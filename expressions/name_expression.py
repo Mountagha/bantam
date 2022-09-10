@@ -1,4 +1,5 @@
-from expression import Expression
+# from expression import Expression
+from expressions.expression import Expression
 
 """
 A simple variable name expression like "abc"
