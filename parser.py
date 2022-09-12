@@ -16,15 +16,13 @@ class Parser:
         self.mInfixParselets = {}
         self.index = 0
     
-    def register(self, token: TokenType, parselet: Union[PrefixParselet, InfixParselet]) -> None:
-        if isinstance(parselet, PrefixParselet):
-            self.mPrefixParselets[token] = parselet
-        elif isinstance(parselet, InfixParselet):
-            self.mInfixParselets[token] = parselet
-        else:
-            raise Exception("Cannot register a non parselet type.")
+    def registerPrefix(self, token: TokenType, parselet: PrefixParselet) -> None:
+        self.mPrefixParselets[token] = parselet
+    
+    def registerInfix(self, token: TokenType, parselet: InfixParselet) -> None:
+        self.mInfixParselets[token] = parselet
 
-    def parseExpression(self, precedence: Precedence) -> Expression: 
+    def parseExpression(self, precedence: Precedence = Precedence.LOWEST) -> Expression: 
         token = self.consume()
         if token.mtype not in self.mPrefixParselets.keys(): 
             raise Exception(f"Could not parse \"{str(token)}\".")
@@ -33,6 +31,7 @@ class Parser:
 
         token = self.lookAhead(0)
         while precedence < self._getPrecedence():
+            print(precedence)
             token = self.consume()
             if token.mtype not in self.mInfixParselets.keys():
                 left = self.mInfixParselets[token.mtype].parse(self, left, token)
@@ -59,6 +58,9 @@ class Parser:
 
     def _getPrecedence(self):
         current_token = self.lookAhead(0)
+        print(f"token {current_token}")
         if current_token.mtype in self.mInfixParselets.keys():
+            x = self.mInfixParselets[current_token.mtype].getPrecedence()
+            print(f"Get precedence {x}")
             return self.mInfixParselets[current_token.mtype].getPrecedence()
         return Precedence.LOWEST

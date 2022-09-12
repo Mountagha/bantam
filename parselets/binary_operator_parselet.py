@@ -27,5 +27,5 @@ class BinaryOperatorParselet(InfixParselet):
         right = parser.parseExpression(self.mPrecedence - (1 if self.mIsRight else 0))
         return OperatorExpression(left, token.mtype, right)
 
-    def precedence(self):
+    def getPrecedence(self):
         return self.mPrecedence

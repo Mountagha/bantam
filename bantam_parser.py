@@ -1,4 +1,3 @@
-from turtle import right
 from parselets.assign_parselet import AssignParselet
 from parselets.call_parselet import CallParselet
 from parselets.conditional_parselet import ConditionalParselet
@@ -22,11 +21,11 @@ class BantamParser(Parser):
         # Register all of the parselets for the grammar.
 
         # Register the ones that need special parselets
-        super().register(TokenType.NAME, NameParselet())
-        super().register(TokenType.ASSIGN, AssignParselet())
-        super().register(TokenType.QUESTION, ConditionalParselet())
-        super().register(TokenType.LEFT_PAREN, GroupParselet())
-        super().register(TokenType.LEFT_PAREN, CallParselet())
+        super().registerPrefix(TokenType.NAME, NameParselet())
+        super().registerInfix(TokenType.ASSIGN, AssignParselet())
+        super().registerInfix(TokenType.QUESTION, ConditionalParselet())
+        super().registerPrefix(TokenType.LEFT_PAREN, GroupParselet())
+        super().registerInfix(TokenType.LEFT_PAREN, CallParselet())
 
         # Register the simple operator parselets
         self.prefix(TokenType.PLUS, Precedence.PREFIX)
@@ -50,7 +49,7 @@ class BantamParser(Parser):
     and precedence.
     """
     def postfix(self, token:TokenType, precedence: Precedence):
-        super().register(token, PostfixOperatorParselet(precedence))
+        super().registerInfix(token, PostfixOperatorParselet(precedence))
 
     """
     Registers a prefix unary operator parselet for the given token
@@ -64,11 +63,11 @@ class BantamParser(Parser):
     token and precedence
     """
     def infixLeft(self, token:TokenType, precedence: Precedence):
-        super().register(token, BinaryOperatorParselet(precedence, False))
+        super().registerInfix(token, BinaryOperatorParselet(precedence, False))
 
     """
     Registers a right-associative binary operator parselet for the given
     token and precedence
     """
     def infixRight(self, token:TokenType, precedence: Precedence):
-        super().register(token, BinaryOperatorParselet(precedence, True))
+        super().registerInfix(token, BinaryOperatorParselet(precedence, True))
