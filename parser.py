@@ -30,10 +30,10 @@ class Parser:
         left = self.mPrefixParselets[token.mtype].parse(self, token)
 
         token = self.lookAhead(0)
-        while precedence < self._getPrecedence():
-            print(precedence)
+        while precedence <= self._getPrecedence():
             token = self.consume()
             if token.mtype not in self.mInfixParselets.keys():
+                print(f"in while and cond {token}")
                 left = self.mInfixParselets[token.mtype].parse(self, left, token)
         return left 
 
@@ -58,9 +58,9 @@ class Parser:
 
     def _getPrecedence(self):
         current_token = self.lookAhead(0)
-        print(f"token {current_token}")
         if current_token.mtype in self.mInfixParselets.keys():
             x = self.mInfixParselets[current_token.mtype].getPrecedence()
-            print(f"Get precedence {x}")
+            print(f"{current_token} has precedence {x}")
             return self.mInfixParselets[current_token.mtype].getPrecedence()
+        print(f"{current_token} has no precedence")
         return Precedence.LOWEST
