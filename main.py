@@ -3,7 +3,7 @@ from lexer import Lexer
 
 if __name__ == "__main__":
     # lexer = Lexer("-+~!a")
-    lexer = Lexer("-a + b")
+    lexer = Lexer("-a + b * c")
     lexer.tokenize()
     tokens = lexer.get_tokens()
     print(tokens)
