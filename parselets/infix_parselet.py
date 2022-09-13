@@ -1,6 +1,6 @@
 from expressions.expression import Expression 
 from parser import Parser
-from token import Token
+from Token import Token
 
 
 """

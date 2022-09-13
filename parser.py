@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING, Union
-from token import Token, TokenType
+from Token import Token, TokenType
 from expressions.expression import Expression
 from precedence import Precedence
 from lexer import Lexer

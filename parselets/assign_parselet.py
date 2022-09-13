@@ -4,7 +4,7 @@ from expressions.name_expression import NameExpression
 from expressions.assign_expression import AssignExpression
 from precedence import Precedence
 from parser import Parser
-from token import Token
+from Token import Token
 from token_type import TokenType
 
 """

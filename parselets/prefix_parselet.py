@@ -1,6 +1,6 @@
 from expressions.expression import Expression 
 from parser import Parser
-from token import Token
+from Token import Token
 """
 One of the two parselet interfaces used by the Pratt parser. A PrefixParselet is 
 associated with a token that appears at the beginning of an expression. Its

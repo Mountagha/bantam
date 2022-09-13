@@ -3,7 +3,7 @@ from expressions.prefix_expression import PrefixExpression
 from parselets.prefix_parselet import PrefixParselet
 from precedence import Precedence
 from parser import Parser
-from token import Token
+from Token import Token
 
 
 """

@@ -2,7 +2,7 @@ from expressions.expression import Expression
 from expressions.name_expression import NameExpression
 from parselets.prefix_parselet import PrefixParselet
 from parser import Parser
-from token import Token
+from Token import Token
 
 
 class NameParselet(PrefixParselet):

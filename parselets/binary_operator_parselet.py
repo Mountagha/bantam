@@ -3,7 +3,7 @@ from expressions.expression import Expression
 from expressions.operator_expression import OperatorExpression
 from precedence import Precedence
 from parser import Parser
-from token import Token
+from Token import Token
 
 """
 Generic infix parselet for a binary arithmetic operator. The only

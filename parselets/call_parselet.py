@@ -3,7 +3,7 @@ from expressions.expression import Expression
 from expressions.call_expression import CallExpression
 from precedence import Precedence
 from parser import Parser
-from token import Token
+from Token import Token
 from token_type import TokenType
 
 """
