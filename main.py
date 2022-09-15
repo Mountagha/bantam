@@ -1,5 +1,7 @@
 from bantam_parser import BantamParser
 from lexer import Lexer
+import pytest
+
 
 if __name__ == "__main__":
     # lexer = Lexer("-+~!a")
