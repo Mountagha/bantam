@@ -10,7 +10,7 @@ Parses parentheses used to group an expression, like "a * (b + c)
 """
 
 class GroupParselet(PrefixParselet):
-    def parse(parser: Parser, token: Token) -> Expression:
+    def parse(self, parser: Parser, token: Token) -> Expression:
         expression = parser.parseExpression()
         parser.consume(TokenType.RIGHT_PAREN)
         return expression

@@ -10,4 +10,4 @@ class OperatorExpression(Expression):
         self.mRight = right
 
     def __repr__(self) -> str:
-        return f" {self.mLeft.__repr__()} {str(self.mOperator)} {self.mRight.__repr__()} "
+        return f"({self.mLeft.__repr__()} {str(self.mOperator)} {self.mRight.__repr__()})"

@@ -39,7 +39,7 @@ class BantamParser(Parser):
         self.infixLeft(TokenType.PLUS, Precedence.SUM)
         self.infixLeft(TokenType.MINUS, Precedence.SUM)
         self.infixLeft(TokenType.ASTERIK, Precedence.PRODUCT)
-        self.infixLeft(TokenType.SLASH, Precedence.EXPONENT)
+        self.infixLeft(TokenType.SLASH, Precedence.PRODUCT)
         self.infixRight(TokenType.CARET, Precedence.EXPONENT)
 
 

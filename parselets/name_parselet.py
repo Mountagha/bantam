@@ -13,6 +13,6 @@ class NameParselet(PrefixParselet):
         super().__init__()
     
     def parse(self, parser: Parser, token: Token) -> Expression:
-        return NameExpression(token.mtype) 
+        return NameExpression(token.text) 
 
 

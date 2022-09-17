@@ -1,11 +1,10 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Union
 from Token import Token, TokenType
 from expressions.expression import Expression
 from precedence import Precedence
 from lexer import Lexer
-from typing import List
-if TYPE_CHECKING:   # to handle circular import.
+from typing import List, TYPE_CHECKING
+if TYPE_CHECKING:   # to avoid circular import.
     from parselets.prefix_parselet import PrefixParselet
     from parselets.infix_parselet import InfixParselet
 
@@ -29,7 +28,7 @@ class Parser:
 
         left = self.mPrefixParselets[token.mtype].parse(self, token)
 
-        token = self.lookAhead(0)
+        # token = self.lookAhead(0)
         while precedence < self._getPrecedence():
             token = self.consume()
             if token.mtype in self.mInfixParselets.keys():
@@ -58,6 +57,5 @@ class Parser:
     def _getPrecedence(self):
         current_token = self.lookAhead(0)
         if current_token.mtype in self.mInfixParselets.keys():
-            x = self.mInfixParselets[current_token.mtype].getPrecedence()
             return self.mInfixParselets[current_token.mtype].getPrecedence()
         return Precedence.LOWEST

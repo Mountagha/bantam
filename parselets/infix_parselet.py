@@ -13,7 +13,8 @@ consume any more tokens in its parse() call.
 """
 
 class InfixParselet:
-    def parse(parser: Parser, left: Expression, token: Token) -> Expression:
+    def parse(self, parser: Parser, left: Expression, token: Token) -> Expression:
         pass
+
     def getPrecedence(self):
         pass

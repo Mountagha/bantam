@@ -12,7 +12,7 @@ original @author: rnystrom. Rewritten by @Mountagha
 """
 
 class PrefixParselet:
-    def parse(parser: Parser, token: Token) -> Expression:
+    def parse(self, parser: Parser, token: Token) -> Expression:
         pass
     
     def getPrecedence(self):

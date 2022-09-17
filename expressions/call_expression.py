@@ -14,4 +14,4 @@ class CallExpression(Expression):
     
     def __repr__(self) -> str:
         args = ", ".join(arg for arg in self.mArgs)
-        return f" {self.mFunction.__repr__()} ({self.mArgs}) "
+        return f"{self.mFunction.__repr__()}({args})"

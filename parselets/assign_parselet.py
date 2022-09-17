@@ -15,7 +15,7 @@ expression must be a simple name like "a", and expressions are right-associative
 
 class AssignParselet(InfixParselet):
 
-    def parse(parser: Parser, left: Expression, token: Token) -> Expression:
+    def parse(self, parser: Parser, left: Expression, token: Token) -> Expression:
         right = parser.parseExpression(Precedence.ASSIGNMENT - 1)
         if not isinstance(left, NameExpression):
             raise Exception("the left hand side of an assignment must be a name.")

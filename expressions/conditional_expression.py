@@ -13,5 +13,5 @@ class ConditionalExpression(Expression):
         self.mElseArm = elseArm
     
     def __repr__(self) -> str:
-        return f" {self.mCondition.__repr__()} ? {self.mThenArm.__repr__()} : {self.mElseArm.__repr__()} "
+        return f"({self.mCondition.__repr__()} ? {self.mThenArm.__repr__()} : {self.mElseArm.__repr__()})"
  

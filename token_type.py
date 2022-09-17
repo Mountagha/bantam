@@ -18,4 +18,6 @@ class TokenType(Enum):
     EOF= 15
 
     def __str__(self):
-        return str(self.name)
+        # last 2 empties chars are TokenType.NAME & TokenType.EOF respectively
+        string_values = ['(', ')', ',', '=', '+', '-', '*', '/', '^', '~', '!', '?', ':', '', '']
+        return string_values[self.value - 1]

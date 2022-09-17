@@ -14,11 +14,10 @@ class CallParselet(InfixParselet):
     def __init__(self) -> None:
         super().__init__()
 
-    @property
     def getPrecedence(self):
         return Precedence.CALL
     
-    def parse(parser: Parser, left: Expression, token: Token):
+    def parse(self, parser: Parser, left: Expression, token: Token):
         # parse the comma separated arguments until we hit, ")"
         args = []
         
