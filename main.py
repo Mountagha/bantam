@@ -1,11 +1,9 @@
-from ast import parse
 from bantam_parser import BantamParser
 from lexer import Lexer
-import pytest
 
 # some turn-around to avoid creating fixtures for pytest.
 
-def parse_string(source: str) -> None:
+def parse_string(source: str) -> str:
     lexer = Lexer(source)
     lexer.tokenize()
     parser = BantamParser(lexer.get_tokens())
