@@ -1,4 +1,3 @@
-from ast import arg
 from typing import List
 from expressions.expression import Expression
 
@@ -13,5 +12,5 @@ class CallExpression(Expression):
         self.mArgs = args
     
     def __repr__(self) -> str:
-        args = ", ".join(arg for arg in self.mArgs)
+        args = ", ".join(arg.__repr__() for arg in self.mArgs)
         return f"{self.mFunction.__repr__()}({args})"

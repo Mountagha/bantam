@@ -1,4 +1,3 @@
-from ast import Expr
 from expressions.expression import Expression
 
 """
@@ -12,4 +11,4 @@ class AssignExpression(Expression):
         self.mLeft = left
     
     def __repr__(self) -> str:
-        return f"( {self.mName} = {self.mLeft.__repr__()} )"
+        return f"({self.mName} = {self.mLeft.__repr__()})"

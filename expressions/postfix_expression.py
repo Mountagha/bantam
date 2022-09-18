@@ -12,5 +12,5 @@ class PostfixExpression(Expression):
         self.mLeft = left
     
     def __repr__(self) -> str:
-        return f"({self.mLeft.__repr__()} {str(self.mOperator)})"
+        return f"({self.mLeft.__repr__()}{str(self.mOperator)})"
  

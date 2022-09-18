@@ -1,5 +1,4 @@
 from expressions.expression import Expression
-from lexer import TokenType
 
 """
 A ternary conditional expression like "a ? b : c".

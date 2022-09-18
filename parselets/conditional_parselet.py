@@ -11,6 +11,7 @@ Parselet for the condition or "ternary" operator, like "a ? b : c".
 """
 
 class ConditionalParselet(InfixParselet):
+
     def __init__(self) -> None:
         super().__init__()
 

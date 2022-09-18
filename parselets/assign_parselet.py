@@ -5,7 +5,6 @@ from expressions.assign_expression import AssignExpression
 from precedence import Precedence
 from parser import Parser
 from Token import Token
-from token_type import TokenType
 
 """
 Parses assignment expression like "a = b". The left side of an assignment

@@ -50,7 +50,13 @@ class Parser:
     
     def match(self, expected: TokenType) -> bool:
         token = self.consume()
-        if (token.mtype != expected):
+        if token.mtype != expected:
+            return False
+        return True 
+
+    def peek(self, expected: TokenType) -> bool:
+        token = self.lookAhead(0)
+        if token.mtype != expected:
             return False
         return True 
 

@@ -22,10 +22,11 @@ class CallParselet(InfixParselet):
         args = []
         
         # There may be not arguments at all
-        if not parser.match(TokenType.RIGHT_PAREN):
+        if not parser.peek(TokenType.RIGHT_PAREN):
             while True:
                 args.append(parser.parseExpression())
-                if parser.match(TokenType.RIGHT_PAREN):
+                if parser.peek(TokenType.RIGHT_PAREN):
+                    parser.consume(TokenType.RIGHT_PAREN)
                     break
                 parser.consume(TokenType.COMMA)
         return CallExpression(left, args) 

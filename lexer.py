@@ -57,11 +57,3 @@ class Lexer:
     def get_tokens(self):
         return self.mPunctuators
     
-if __name__ == "__main__":
-    source = "a(b ? c : d, e + f)"
-    lexer = Lexer(source)
-    lexer.tokenize()
-    tokens = lexer.get_token()
-    for token in tokens:
-        print(token)
-            
